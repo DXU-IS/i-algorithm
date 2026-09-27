@@ -379,6 +379,13 @@ button:disabled{opacity:.4;cursor:default}
 .slide.summary-slide .summary-implications h3{font-size:24px;line-height:1.2;color:var(--accent);margin:0 0 12px}
 .slide.summary-slide .summary-implications p{font-size:24px;line-height:1.23;margin:0 0 14px}
 .slide.references-slide .reference-columns p{font-size:15px;line-height:1.18;margin-bottom:8px}
+
+/* Progressive slide builds retain layout while concealing later steps. */
+[data-reveal]{transition:opacity .4s ease;}
+[data-reveal].reveal-pending{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}
+.editing [data-reveal].reveal-pending{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
+@media(prefers-reduced-motion:reduce){[data-reveal]{transition:none}}
+@media print{[data-reveal].reveal-pending{opacity:1!important;visibility:visible!important}}
 </style>
 </head>
 <body>
@@ -634,10 +641,10 @@ button:disabled{opacity:.4;cursor:default}
 <script>
 const slides=[...document.querySelectorAll('[data-slide]')];
 let current=0;
-function show(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.hidden=i!==current);document.querySelector('#counter').textContent=`Slide ${current} / ${slides.length-1}`;document.querySelector('#prev').disabled=current===0;document.querySelector('#next').disabled=current===slides.length-1;history.replaceState(null,'','#slide-'+current);}
-document.querySelector('#prev').addEventListener('click',()=>show(current-1));
-document.querySelector('#next').addEventListener('click',()=>show(current+1));
-document.addEventListener('keydown',e=>{if(e.target.isContentEditable||e.altKey||e.ctrlKey||e.metaKey)return;if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}});
+function show(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.hidden=i!==current);document.querySelector('#counter').textContent=`Slide ${current} / ${slides.length-1}`;document.querySelector('#prev').disabled=current===0;document.querySelector('#next').disabled=current===slides.length-1;history.replaceState(null,'','#slide-'+current);resetReveal();}
+document.querySelector('#prev').addEventListener('click',()=>stepBackward());
+document.querySelector('#next').addEventListener('click',()=>stepForward());
+document.addEventListener('keydown',e=>{if(e.target.isContentEditable||e.target.closest('button,[role=button],input,textarea,select,a')||e.altKey||e.ctrlKey||e.metaKey)return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();stepForward()}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();stepBackward()}});
 document.querySelector('#present').addEventListener('click',()=>document.querySelector('.workspace').requestFullscreen?.());
 
 function fitContentSlides(){const full=!!document.fullscreenElement;const availableW=window.innerWidth-(full?0:56);const availableH=window.innerHeight-(full?0:104);document.documentElement.style.setProperty('--content-scale',Math.max(.1,Math.min(availableW/1280,availableH/720,full?Infinity:1)));}
@@ -660,6 +667,41 @@ function resetBoss(){clearTimeout(mergeTimer);mergeTimer=null;bossAnimation.clas
 function moveBossCircle(){if(bossAnimation.classList.contains('merging')||bossAnimation.classList.contains('merged'))return;bossAnimation.classList.add('merging');movingCircles.forEach(el=>{el.classList.add('arrived');el.setAttribute('aria-pressed','true');});mergeTimer=setTimeout(()=>{bossAnimation.classList.add('merged');bossAnimation.classList.remove('merging');bossAnimation.querySelector('.merged-circle').setAttribute('aria-hidden','false');movingCircles.forEach(c=>c.tabIndex=-1);mergeTimer=setTimeout(()=>{document.querySelector('#reset-circles').hidden=false;},950);},2200);}
 movingCircles.forEach(el=>{el.addEventListener('click',()=>moveBossCircle(el));el.addEventListener('keydown',e=>{if(e.target.isContentEditable)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();moveBossCircle(el);}});});
 document.querySelector('#reset-circles').addEventListener('click',resetBoss);
+
+
+// Click-through builds: each destination appears with its incoming connectors.
+let revealStep=0;
+function tagReveal(slide, selector, step){slide.querySelectorAll(selector).forEach(el=>el.dataset.reveal=step);}
+function prepareReveals(){
+ const at=n=>slides.find(s=>s.dataset.slide===String(n));
+ tagReveal(at(5),'.method-prompt',1);
+ at(6).querySelectorAll('tbody tr').forEach((row,i)=>{if(i)row.dataset.reveal=i;});
+ tagReveal(at(7),'.layer-row-label,.coding-layer.outputs',1);
+ tagReveal(at(7),'.focus-row-label,.coding-explanations',2);
+ at(7).querySelectorAll('.process-connectors g path').forEach((p,i)=>{if(i>=2)p.dataset.reveal=1;});
+ tagReveal(at(8),'.coding-arrows ellipse',1);
+ tagReveal(at(8),'.coding-arrows g path,.code-label',2);
+ [9,10,11].forEach(n=>{
+  const s=at(n);tagReveal(s,'.f1-h2,.f1-theme',1);tagReveal(s,'.f1-h3,.f1-dimension',2);tagReveal(s,'.f1-h4,.f1-core',3);
+  s.querySelectorAll('.f1-connectors g path').forEach(p=>{const x=Number(p.getAttribute('d').match(/^M\s*(\d+)/)[1]);p.dataset.reveal=x<600?1:x<900?2:3;});
+ });
+ // Slide 12 is a comparison, not a coding diagram: matching, control, synthesis.
+ tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(4)',1);
+ tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(3)',2);
+}
+function maxReveal(){return Math.max(0,...[...slides[current].querySelectorAll('[data-reveal]')].map(el=>Number(el.dataset.reveal)));}
+function renderReveal(){slides[current].querySelectorAll('[data-reveal]').forEach(el=>{
+ const pending=Number(el.dataset.reveal)>revealStep;el.classList.toggle('reveal-pending',pending);
+ if(pending)el.setAttribute('aria-hidden','true');else el.removeAttribute('aria-hidden');
+});}
+function resetReveal(){revealStep=0;renderReveal();}
+function stepForward(){if(revealStep<maxReveal()){revealStep++;renderReveal();}else show(current+1);}
+function stepBackward(){if(revealStep>0){revealStep--;renderReveal();}else show(current-1);}
+slides.forEach(s=>s.addEventListener('click',e=>{
+ if(s.classList.contains('editing')||e.target.closest('a,button,input,textarea,select,.moving-circle'))return;
+ if(revealStep<maxReveal()){e.preventDefault();e.stopPropagation();revealStep++;renderReveal();}
+},true));
+prepareReveals();
 
 const initial=Number(location.hash.replace('#slide-',''));show(Number.isInteger(initial)?initial:0);
 </script>
