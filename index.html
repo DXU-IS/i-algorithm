@@ -386,6 +386,9 @@ button:disabled{opacity:.4;cursor:default}
 .editing [data-reveal].reveal-pending{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
 @media(prefers-reduced-motion:reduce){[data-reveal]{transition:none}}
 @media print{[data-reveal].reveal-pending{opacity:1!important;visibility:visible!important}}
+
+.synthesis-matrix thead .uber-column{position:relative}
+.synthesis-matrix thead .uber-column::after{content:"";position:absolute;inset:7px 12px;border:3px solid #ae452c;border-radius:50%;pointer-events:none}
 </style>
 </head>
 <body>
@@ -569,7 +572,7 @@ button:disabled{opacity:.4;cursor:default}
 <footer class="question-footer"><span>11</span></footer>
 </section>
 <section class="slide intro-slide synthesis-slide" data-slide="12" aria-label="Slide 12: Aggregated findings and semi-entrepreneurship" hidden>
-<h2 class="intro-title" data-edit>Aggregated findings: semi-entrepreneurship</h2>
+<h2 class="intro-title" data-edit>Aggregated Findings: My Entrepreneurship</h2>
 <table class="synthesis-matrix"><colgroup><col style="width:17%"><col style="width:27%"><col style="width:29%"><col style="width:27%"></colgroup>
 <thead><tr><th></th><th data-edit>Algorithmic<br>matching</th><th class="uber-column" data-edit>Uber:<br>the middle ground</th><th data-edit>Algorithmic<br>control</th></tr></thead>
 <tbody>
@@ -674,11 +677,16 @@ let revealStep=0;
 function tagReveal(slide, selector, step){slide.querySelectorAll(selector).forEach(el=>el.dataset.reveal=step);}
 function prepareReveals(){
  const at=n=>slides.find(s=>s.dataset.slide===String(n));
+ tagReveal(at(3),'.case-rationale',1);
+ tagReveal(at(3),'.theory-main',2);
+ tagReveal(at(3),'.intro-rq',3);
  tagReveal(at(5),'.method-prompt',1);
- at(6).querySelectorAll('tbody tr').forEach((row,i)=>{if(i)row.dataset.reveal=i;});
- tagReveal(at(7),'.layer-row-label,.coding-layer.outputs',1);
- tagReveal(at(7),'.focus-row-label,.coding-explanations',2);
- at(7).querySelectorAll('.process-connectors g path').forEach((p,i)=>{if(i>=2)p.dataset.reveal=1;});
+ tagReveal(at(6),'.collection-table thead',1);
+ at(6).querySelectorAll('tbody tr').forEach((row,i)=>{row.dataset.reveal=i+1;});
+ tagReveal(at(7),'.stage-row-label,.coding-layer.stages',1);
+ tagReveal(at(7),'.layer-row-label,.coding-layer.outputs',2);
+ tagReveal(at(7),'.focus-row-label,.coding-explanations',3);
+ at(7).querySelectorAll('.process-connectors g path').forEach((p,i)=>{p.dataset.reveal=i<2?1:2;});
  tagReveal(at(8),'.coding-arrows ellipse',1);
  tagReveal(at(8),'.coding-arrows g path,.code-label',2);
  [9,10,11].forEach(n=>{
@@ -686,8 +694,12 @@ function prepareReveals(){
   s.querySelectorAll('.f1-connectors g path').forEach(p=>{const x=Number(p.getAttribute('d').match(/^M\s*(\d+)/)[1]);p.dataset.reveal=x<600?1:x<900?2:3;});
  });
  // Slide 12 is a comparison, not a coding diagram: matching, control, synthesis.
- tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(4)',1);
- tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(3)',2);
+ tagReveal(at(12),'.synthesis-matrix',1);
+ tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(1),.synthesis-matrix tr>*:nth-child(2)',1);
+ tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(4)',2);
+ tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(3)',3);
+ tagReveal(at(15),'.summary-flow',1);
+ at(15).querySelectorAll('.summary-implications>div').forEach((el,i)=>el.dataset.reveal=i+2);
 }
 function maxReveal(){return Math.max(0,...[...slides[current].querySelectorAll('[data-reveal]')].map(el=>Number(el.dataset.reveal)));}
 function renderReveal(){slides[current].querySelectorAll('[data-reveal]').forEach(el=>{
