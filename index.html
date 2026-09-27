@@ -248,7 +248,7 @@ button:disabled{opacity:.4;cursor:default}
 .slide.coding-slide .talking-pig{display:inline-block;margin-top:10px;font-size:24px;font-weight:400;font-style:italic;color:var(--accent)}
 
 .slide.synthesis-slide .intro-title{font-size:42px;margin-bottom:32px}
-.synthesis-matrix{width:1136px;border-collapse:collapse;table-layout:fixed}
+.synthesis-matrix{width:1136px;border-collapse:separate;border-spacing:0;table-layout:fixed}
 .slide.synthesis-slide .synthesis-matrix th,.slide.synthesis-slide .synthesis-matrix td{font-size:26px;line-height:1.3;padding:22px 18px;vertical-align:middle;text-align:left;border-bottom:1px solid #bfc4b9}
 .slide.synthesis-slide .synthesis-matrix thead th{font-size:28px;color:var(--accent);padding-top:16px;padding-bottom:22px}
 .slide.synthesis-slide .synthesis-matrix tbody th{font-size:24px;color:#506058;padding-left:0}
@@ -387,8 +387,7 @@ button:disabled{opacity:.4;cursor:default}
 @media(prefers-reduced-motion:reduce){[data-reveal]{transition:none}}
 @media print{[data-reveal].reveal-pending{opacity:1!important;visibility:visible!important}}
 
-.synthesis-matrix thead .uber-column{position:relative}
-.synthesis-matrix thead .uber-column::after{content:"";position:absolute;inset:7px 12px;border:3px solid #ae452c;border-radius:50%;pointer-events:none}
+.synthesis-matrix .uber-column.reveal-pending{border-color:transparent!important;background:transparent!important}
 </style>
 </head>
 <body>
