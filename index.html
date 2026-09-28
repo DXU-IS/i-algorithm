@@ -388,6 +388,16 @@ button:disabled{opacity:.4;cursor:default}
 @media print{[data-reveal].reveal-pending{opacity:1!important;visibility:visible!important}}
 
 .synthesis-matrix .uber-column.reveal-pending{border-color:transparent!important;background:transparent!important}
+
+.combined-top{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:26px}
+.combined-top>div{border-top:3px solid #ae452c;padding:18px 20px 0 0}
+.slide.combined-intro h3{font:700 26px/1.2 Arial,sans-serif;color:#ae452c;margin:0 0 14px}
+.slide.combined-intro .combined-top p{font:24px/1.35 Arial,sans-serif;margin:0 0 18px}
+.combined-rationale{border-left:1px solid #bfc4b9;padding-left:26px!important}
+.combined-arrows{display:block;width:1136px;height:55px}
+.combined-rq{padding:16px 24px;background:#ece7dd;border-left:4px solid #ae452c}
+.slide.combined-intro .combined-rq h3{margin-bottom:9px}
+.slide.combined-intro .combined-rq p{font:700 28px/1.3 Arial,sans-serif;margin:0}
 </style>
 </head>
 <body>
@@ -420,49 +430,24 @@ button:disabled{opacity:.4;cursor:default}
 <footer class="question-footer"><span>1</span></footer>
 </section>
 
-<section class="slide intro-slide case-slide" data-slide="2" aria-label="Slide 2: The Uber case" hidden="">
-<h2 class="intro-title" data-edit="">The case: Uber</h2>
-<img class="uber-logo" src="data:image/png;base64,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zMc//nGzcOHCHS/sZE/v3r3NZZddZi666CIzZMgQI5sbDbJD6X/vvffM+vXrzauvvmoWL15sHnroIfPPf/7TPPvss94e2DPOOMP84Ac/MAcccEDTwtJVetvSJU433nhjV6dvOy6W3/jGN8wll1xiJNbNsFWkermIrV6qq1evNs8995x57LHHErbKZxJHQjUIqBgUzd8FF1xgXeZ0z/6OwZX+rMv8XlgcffTR1r35d7yJ2+NKW/aoo47KfZ9DDjnErlixIjNOXzu3bNliV65caW+66SY7duzY3DZ2zEt9+/a1f/3rX32ZV1c8ruRn3Qsol+0HH3ywffHFF+uKv9GTlO/cy9XOnj3bnn766da9hHPZ2JFtC2xvcWloKtAG2BS+sC5WdVpV+CKDqoF77bWX+cIXvmBmzpxpVGJuJuy8885JiaqZOPJe+/e//90sXbo012Uf+tCHzKBBg3Jdk/dklU532203c84555jbbrvNfPe73zUDBgzIGw3ntyOAALaDwU+/BFypyFx77bVJ1dVvzMXFpirnHXfckWp2qOduEqcyw6677mouv/zy5K/Z6naZdlftXghg1TzSTfaozWnTpk1m48aNdf3pXFfdTbWDZpl+5JFHmilTpmQdquS+efPmmUceecSrba7KmwiqeIlzV39t5+m6zoLaob/61a+ak046qbPTONYJATpBOoET0yH1en77299OenTrKc3oHFWpR48enXTIuDZJo+pvVjjzzDPNL37xiyTurOON7pOQ/OY3vzH/+c9/at47T9wSHAngW2+9leeyLs9dtWqV+f73v590XtXDVhGqw0rV3SOOOMKceuqpZsSIEZm93zrn85//fNI5IuEk5COAAObj1bJna5jFnDlzkh7HvImUCP36179OesCzrj3wwAOTISwazuEzSAD/9re/Jb3lPuP1HZeGB7mOCyMhzBskmBoOdcMNN5gTTzwx8/IJEyYkfPMO28mMLLKd2a/syCCQ3PcJ1Fs66cjL9SwnJTy1n2UFlRQ17rCI0KjNRdhSK07Z2KidKpUuWrTI/PCHP0zGAmbdQ+MONWyKkJ8AApifGVdkEHjqqafMK6+8knHk/eocvZWZaOreqWq+xlZmhX79+pn9998/6xD7uiCAAHYBiMP1EdDAXM0KyQpqm1LnCqFxAhps7sZX1oxAbYGE/AQQwPzMuCKDgHokNT0w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" alt="Uber logo supplied by presenter">
-<div class="case-copy">
-<p data-edit="">Founded in <strong>2009</strong>, Uber is a ride-hailing platform that connects riders and drivers through an app <a href="https://www.sec.gov/Archives/edgar/data/1543151/000154315126000015/uber-20251231.htm" target="_blank" rel="noopener">(Uber, 2026a)</a>.</p>
-<ul>
-<li data-edit=""><strong>≈34,000 company employees</strong> worldwide at 31 December 2025 <a href="https://www.sec.gov/Archives/edgar/data/1543151/000154315126000015/uber-20251231.htm" target="_blank" rel="noopener">(Uber, 2026a)</a>.</li>
-<li data-edit="">Operations in <strong>over 70 countries</strong> and <strong>15,000+ cities</strong> at year-end 2025 <a href="https://www.sec.gov/Archives/edgar/data/1543151/000154315126000015/uber-20251231.htm" target="_blank" rel="noopener">(Uber, 2026a)</a>.</li>
-<li data-edit=""><strong>208 million monthly active consumers</strong> in Q2 2026, across rides and delivery <a href="https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Results-for-Second-Quarter-2026/default.aspx" target="_blank" rel="noopener">(Uber, 2026b)</a>.</li>
-<li data-edit=""><strong>3.9 billion rides and delivery orders</strong> completed in Q2 2026 <a href="https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Results-for-Second-Quarter-2026/default.aspx" target="_blank" rel="noopener">(Uber, 2026b)</a>.</li>
-</ul>
+<section class="slide intro-slide combined-intro" data-slide="2" aria-label="Slide 2: Case, rationale and research question" hidden>
+<h2 class="intro-title" data-edit>Case, rationale and research question</h2>
+<div class="combined-top">
+<div class="combined-case" data-reveal="1"><h3 data-edit>The case: Uber</h3>
+<p data-edit>Uber is a widely used ride-hailing platform connecting riders and drivers through its app <a href="https://ijoc.org/index.php/ijoc/article/view/4892" target="_blank" rel="noopener">(Rosenblat &amp; Stark, 2016)</a>.</p>
+<p data-edit><strong>Extreme-case selection:</strong> high levels of both matching and control (Möhlmann et al., 2021; Gerring, 2007).</p></div>
+<div class="combined-rationale" data-reveal="2"><h3 data-edit>Theoretical rationale</h3>
+<p data-edit><strong>Two dimensions:</strong> matching supply and demand; controlling work.</p>
+<p data-edit>Prior work emphasizes allocation and matching. Uber offers a case for examining how algorithms coordinate and control work (Möhlmann et al., 2021).</p></div>
 </div>
-<footer class="question-footer"><span>2</span></footer>
-</section>
-<section class="slide intro-slide theory-slide" data-slide="3" aria-label="Slide 3: Theoretical motivations and research question" hidden="">
-<h2 class="intro-title" data-edit="">Theoretical motivations</h2>
-<div class="theory-columns">
-<div class="theory-main">
-<h3 class="intro-label" data-edit="">1. Matching and control</h3>
-<p class="intro-body" data-edit="">Algorithmic management has two dimensions: (1) matching supply and demand and (2) controlling work. Upwork and MTurk emphasize matching; Uber combines both mechanisms (Möhlmann et al., 2021).</p>
-<h3 class="intro-label second-label" data-edit="">2. Platforms as organizations</h3>
-<p class="intro-body" data-edit="">A market perspective emphasizes transactions and work allocation. An organizational perspective examines how algorithms coordinate and control work (Möhlmann et al., 2021; Schildt, 2017).</p>
-</div>
-<div class="case-rationale">
-<h3 class="intro-label" data-edit="">Why Uber?</h3>
-<p class="intro-body" data-edit=""><strong>Extreme-case selection:</strong> Uber scores highly on matching and control, making it an informative case for theory development.</p>
-</div>
-</div>
-<div class="intro-rq"><h3 class="intro-label" data-edit="">Research question</h3><p class="rq-text" data-edit="">How does algorithmic management as implemented by the Uber app affect platform work?</p></div>
-<footer class="question-footer"><span>3</span></footer>
-</section>
+<svg class="combined-arrows" data-reveal="3" viewBox="0 0 1136 55" aria-hidden="true"><defs><marker id="intro-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ae452c"/></marker></defs><g fill="none" stroke="#ae452c" stroke-width="2.5" marker-end="url(#intro-flow-arrow)"><path d="M260 0L420 48"/><path d="M876 0L716 48"/></g></svg>
+<div class="combined-rq" data-reveal="3"><h3 data-edit>Research question</h3><p data-edit>How does algorithmic management as implemented by the Uber app affect platform work?</p></div>
+<footer class="question-footer"><span>2</span></footer></section>
 
-<section class="slide intro-slide concept-slide" data-slide="4" aria-label="Slide 4: Key concepts" hidden="">
-<h2 class="intro-title" data-edit="">Key concepts</h2>
-<div class="concept-rows">
-<div class="concept-row"><h3 data-edit="">Online labor<br>platforms (OLPs)</h3><p data-edit="">Digital intermediaries that connect workers with clients seeking services (Kuhn &amp; Maleki, 2017).</p></div>
-<div class="concept-row"><h3 data-edit="">Meta-organizations</h3><p data-edit="">Organizations that coordinate independent participants beyond their formal boundaries, without relying on conventional employment relationships (Gulati et al., 2012).<br><br><strong>Uber example:</strong> Drivers participate in Uber’s platform, while Uber coordinates their work through algorithms and platform rules.</p></div>
-<div class="concept-row"><h3 data-edit="">Algorithmic<br>management</h3><div><p data-edit="">Algorithms perform managerial functions, supported by organizational practices and systems (Lee et al., 2015).</p><p class="dimensions" data-edit=""><strong>Two dimensions in this study:</strong> (1) matching supply and demand; (2) controlling work (Möhlmann et al., 2021).</p></div></div>
-</div>
-<footer class="question-footer"><span>4</span></footer>
-</section>
 
-<section class="slide intro-slide method-slide" data-slide="5" aria-label="Slide 5: Research approach" hidden="">
+
+
+<section class="slide intro-slide method-slide" data-slide="3" aria-label="Slide 3: Research approach" hidden="">
 <h2 class="intro-title" data-edit="">Research approach</h2>
 <div class="method-columns">
 <div><h3 class="intro-label" data-edit="">Grounded theory</h3>
@@ -472,10 +457,10 @@ button:disabled{opacity:.4;cursor:default}
 <div class="method-prompt"><h3 class="intro-label" data-edit="">Question</h3>
 <p data-edit=""><strong>If you were to conduct this study in the case of Uber, how would you use grounded theory to collect data, and what kind of data would you collect?</strong></p>
 </div></div>
-<footer class="question-footer"><span>5</span></footer>
+<footer class="question-footer"><span>3</span></footer>
 </section>
 
-<section class="slide intro-slide collection-slide" data-slide="6" aria-label="Slide 6: Data collection" hidden="">
+<section class="slide intro-slide collection-slide" data-slide="4" aria-label="Slide 4: Data collection" hidden="">
 <h2 class="intro-title" data-edit="">Data collection</h2>
 <table class="collection-table"><colgroup><col style="width:6%"><col style="width:13%"><col style="width:13%"><col style="width:21%"><col style="width:24%"><col style="width:23%"></colgroup>
 <thead><tr><th data-edit="">Wave</th><th data-edit="">Period</th><th data-edit="">Location</th><th data-edit="">Methods</th><th data-edit="">Sample/material</th><th data-edit="">Purpose</th></tr></thead>
@@ -486,10 +471,10 @@ button:disabled{opacity:.4;cursor:default}
 </tbody></table>
 
 
-<footer class="question-footer"><span>6</span></footer>
+<footer class="question-footer"><span>4</span></footer>
 </section>
 
-<section class="slide intro-slide coding-slide" data-slide="7" aria-label="Slide 7: Coding and theory development" hidden>
+<section class="slide intro-slide coding-slide" data-slide="5" aria-label="Slide 5: Coding and theory development" hidden>
 <h2 class="intro-title" data-edit>Coding and theory development</h2>
 
 <div class="coding-chart">
@@ -505,9 +490,9 @@ button:disabled{opacity:.4;cursor:default}
 <div><h3 data-edit>Theoretical core</h3><p data-edit>Integrate themes into dimensions and core categories. Connect them in a framework explaining algorithmic management and platform work.</p></div>
 </div></div>
 
-<footer class="question-footer"><span>7</span></footer>
+<footer class="question-footer"><span>5</span></footer>
 </section>
-<section class="slide intro-slide forum-slide" data-slide="8" aria-label="Slide 8: Text analysis and coding of forum posts">
+<section class="slide intro-slide forum-slide" data-slide="6" aria-label="Slide 6: Text analysis and coding of forum posts">
 <h2 class="intro-title" data-edit="">Text analysis and coding of forum posts</h2>
 <div class="forum-images">
 
@@ -525,9 +510,9 @@ button:disabled{opacity:.4;cursor:default}
 </div>
 
 <p class="forum-source"><a href="https://www.uberpeople.net/threads/algorithmic-management-uber.501482/?post_id=7994250&amp;nested_view=1#post-7994250" target="_blank" rel="noopener">Source: UberPeople.net — “Algorithmic management Uber”</a></p>
-<footer class="question-footer"><span>8</span></footer>
+<footer class="question-footer"><span>6</span></footer>
 </section>
-<section class="slide intro-slide figure-one-slide" data-slide="9" aria-label="Slide 9: Algorithmic management data structure" hidden>
+<section class="slide intro-slide figure-one-slide" data-slide="7" aria-label="Slide 7: Algorithmic management data structure" hidden>
 <h2 class="intro-title" data-edit>Algorithmic management</h2>
 <div class="f1-diagram">
 <div class="f1-heading f1-h1" data-edit>First-order indicators</div><div class="f1-heading f1-h2" data-edit>Second-order<br>themes</div><div class="f1-heading f1-h3" data-edit>Aggregated<br>dimensions</div><div class="f1-heading f1-h4" data-edit>Core<br>categories</div>
@@ -539,9 +524,9 @@ button:disabled{opacity:.4;cursor:default}
 <path d="M660 319L714 391"/><path d="M660 391H714"/><path d="M660 463L714 391"/>
 <path d="M914 175L956 278"/><path d="M914 391L956 286"/>
 </g></svg></div>
-<footer class="question-footer"><span>9</span></footer>
+<footer class="question-footer"><span>7</span></footer>
 </section>
-<section class="slide intro-slide figure-one-slide figure-two-slide" data-slide="10" aria-label="Slide 10: Tensions of platform work data structure" hidden>
+<section class="slide intro-slide figure-one-slide figure-two-slide" data-slide="8" aria-label="Slide 8: Tensions of platform work data structure" hidden>
 <h2 class="intro-title" data-edit>Tensions of platform work</h2>
 <div class="f1-diagram">
 <div class="f1-heading f1-h1" data-edit>First-order indicators</div><div class="f1-heading f1-h2" data-edit>Second-order<br>themes</div><div class="f1-heading f1-h3" data-edit>Aggregated<br>dimensions</div><div class="f1-heading f1-h4" data-edit>Core<br>categories</div>
@@ -554,9 +539,9 @@ button:disabled{opacity:.4;cursor:default}
 <path d="M660 391L714 427"/><path d="M660 463L714 427"/>
 <path d="M914 139L956 273"/><path d="M914 283H956"/><path d="M914 427L956 293"/>
 </g></svg></div>
-<footer class="question-footer"><span>10</span></footer>
+<footer class="question-footer"><span>8</span></footer>
 </section>
-<section class="slide intro-slide figure-one-slide figure-three-slide" data-slide="11" aria-label="Slide 11: Platform workers’ responses data structure" hidden>
+<section class="slide intro-slide figure-one-slide figure-three-slide" data-slide="9" aria-label="Slide 9: Platform workers’ responses data structure" hidden>
 <h2 class="intro-title" data-edit>Platform workers’ responses</h2>
 <div class="f1-diagram">
 <div class="f1-heading f1-h1" data-edit>First-order indicators</div><div class="f1-heading f1-h2" data-edit>Second-order<br>themes</div><div class="f1-heading f1-h3" data-edit>Aggregated<br>dimensions</div><div class="f1-heading f1-h4" data-edit>Core<br>categories</div>
@@ -568,9 +553,9 @@ button:disabled{opacity:.4;cursor:default}
 <path d="M660 330L714 380"/><path d="M660 430L714 380"/>
 <path d="M914 180L956 272"/><path d="M914 380L956 288"/>
 </g></svg></div>
-<footer class="question-footer"><span>11</span></footer>
+<footer class="question-footer"><span>9</span></footer>
 </section>
-<section class="slide intro-slide synthesis-slide" data-slide="12" aria-label="Slide 12: Aggregated findings and semi-entrepreneurship" hidden>
+<section class="slide intro-slide synthesis-slide" data-slide="10" aria-label="Slide 10: Aggregated findings and semi-entrepreneurship" hidden>
 <h2 class="intro-title" data-edit>Aggregated Findings: Semi-Entrepreneurship</h2>
 <table class="synthesis-matrix"><colgroup><col style="width:17%"><col style="width:27%"><col style="width:29%"><col style="width:27%"></colgroup>
 <thead><tr><th></th><th data-edit>Algorithmic<br>matching</th><th class="uber-column" data-edit>Uber:<br>the middle ground</th><th data-edit>Algorithmic<br>control</th></tr></thead>
@@ -581,9 +566,9 @@ button:disabled{opacity:.4;cursor:default}
 
 </tbody></table>
 
-<footer class="question-footer"><span>12</span></footer>
+<footer class="question-footer"><span>10</span></footer>
 </section>
-<section class="slide intro-slide boss-slide" data-slide="13" aria-label="Slide 13: Who is the boss?" hidden>
+<section class="slide intro-slide boss-slide" data-slide="11" aria-label="Slide 11: Who is the boss?" hidden>
 <h2 class="intro-title" data-edit>Who is the boss?</h2>
 <div class="boss-animation" id="boss-animation">
 <div class="moving-circle left-circle" role="button" tabindex="0" aria-label="Merge both circles" aria-pressed="false"><h3 data-edit>Self-employed<br>entrepreneurs</h3><p class="circle-quote" data-edit>“I am my own boss.”</p><p data-edit>Full autonomy over when to work.<br>Determine their own workload.</p></div>
@@ -591,9 +576,9 @@ button:disabled{opacity:.4;cursor:default}
 <div class="merged-circle" aria-live="polite" aria-hidden="true"><h3 data-edit>Uber drivers</h3><p class="circle-quote" data-edit>“The algorithm is my boss.<br>I am also my own boss.”</p><p data-edit>Freedom to decide when<br>and how much to work.</p><p data-edit>Algorithmic supervision, with little<br>room to negotiate or tailor the work.</p><p class="merge-conclusion" data-edit>Both states coexist.</p></div>
 </div>
 <button class="reset-circles" id="reset-circles" hidden>Reset</button>
-<footer class="question-footer"><span>13</span></footer>
+<footer class="question-footer"><span>11</span></footer>
 </section>
-<section class="slide intro-slide community-slide" data-slide="14" aria-label="Slide 14: The dual nature of platforms: Market and organization" hidden>
+<section class="slide intro-slide community-slide" data-slide="12" aria-label="Slide 12: The dual nature of platforms: Market and organization" hidden>
 <h2 class="intro-title" data-edit>The dual nature of platforms: Market and organization</h2>
 <div class="community-columns">
 <div><h3 class="community-title" data-edit>Traditional taxi drivers</h3><p class="community-subtitle" data-edit>Illustrative unionized model</p>
@@ -618,9 +603,9 @@ button:disabled{opacity:.4;cursor:default}
 <p class="community-copy" data-edit><strong>Control:</strong> earnings incentives encourage long hours; sanctions enforce platform directives.</p>
 </div></div>
 
-<footer class="question-footer"><span>14</span></footer>
+<footer class="question-footer"><span>12</span></footer>
 </section>
-<section class="slide intro-slide summary-slide" data-slide="15" aria-label="Slide 15: Summary and implications" hidden>
+<section class="slide intro-slide summary-slide" data-slide="13" aria-label="Slide 13: Summary and implications" hidden>
 <h2 class="intro-title" data-edit>Summary and implications</h2>
 <div class="summary-flow">
 <div class="summary-box"><h3 data-edit>Algorithmic management</h3><p data-edit>Matching · Control</p></div>
@@ -633,9 +618,9 @@ button:disabled{opacity:.4;cursor:default}
 <div><h3 data-edit>Practical implication</h3><p data-edit>Stronger legal protections are needed to safeguard drivers’ welfare, ensure fair pay and rest, and address algorithmic sanctions.</p></div>
 <div><h3 data-edit>Critique &amp; Reflection</h3><p data-edit>Three waves could trace how algorithmic control evolves.</p><p data-edit>ID checks, removal of fare multipliers and Upfront Fares reshape monitoring and pay (Uber, 2016, 2021, 2022).</p><p data-edit>UK evidence links algorithm-driven dynamic pricing to lower driver pay and more waiting time (Binns et al., 2025).</p></div>
 </div>
-<footer class="question-footer"><span>15</span></footer></section>
-<section class="slide intro-slide references-slide" data-slide="16" aria-label="Slide 16: References" hidden><h2 class="intro-title" data-edit>References</h2><div class="reference-columns"><div><p data-edit>Binns, R., Stein, J., Datta, S., Van Kleek, M. and Shadbolt, N. (2025) ‘Not even nice work if you can get it: A longitudinal study of Uber’s algorithmic pay and pricing’, <em>arXiv</em>, 2506.15278. doi: <a href="https://doi.org/10.48550/arXiv.2506.15278" target="_blank" rel="noopener">10.48550/arXiv.2506.15278</a>.</p><p data-edit>Charmaz, K. (2014) <em>Constructing grounded theory</em>. 2nd edn. London: SAGE.</p><p data-edit>Curchod, C., Patriotta, G., Cohen, L. and Neysen, N. (2020) ‘Working for an algorithm: Power asymmetries and agency in online work settings’, <em>Administrative Science Quarterly</em>, 65(3), pp. 644–676.</p><p data-edit>Gawer, A. (2014) ‘Bridging differing perspectives on technological platforms: Toward an integrative framework’, <em>Research Policy</em>, 43(7), pp. 1239–1249.</p><p data-edit>Gerring, J. (2007) <em>Case study research: Principles and practices</em>. Cambridge: Cambridge University Press.</p><p data-edit>Gioia, D.A., Corley, K.G. and Hamilton, A.L. (2013) ‘Seeking qualitative rigor in inductive research: Notes on the Gioia methodology’, <em>Organizational Research Methods</em>, 16(1), pp. 15–31.</p><p data-edit>Glaser, B.G. (1978) <em>Theoretical sensitivity: Advances in the methodology of grounded theory</em>. Mill Valley, CA: Sociology Press.</p><p data-edit>Gulati, R., Puranam, P. and Tushman, M. (2012) ‘Meta-organization design: Rethinking design in interorganizational and community contexts’, <em>Strategic Management Journal</em>, 33(6), pp. 571–586.</p><p data-edit>Kuhn, K.M. and Maleki, A. (2017) ‘Micro-entrepreneurs, dependent contractors, and instaserfs: Understanding online labor platform workforces’, <em>Academy of Management Perspectives</em>, 31(3), pp. 183–200. doi: <a href="https://doi.org/10.5465/amp.2015.0111" target="_blank" rel="noopener">10.5465/amp.2015.0111</a>.</p><p data-edit>Lee, M.K., Kusbit, D., Metsky, E. and Dabbish, L. (2015) ‘Working with machines: The impact of algorithmic and data-driven management on human workers’, in <em>Proceedings of the 33rd Annual ACM Conference on Human Factors in Computing Systems</em>. New York: ACM, pp. 1603–1612. doi: <a href="https://doi.org/10.1145/2702123.2702548" target="_blank" rel="noopener">10.1145/2702123.2702548</a>.</p></div><div><p data-edit>Möhlmann, M., Zalmanson, L., Henfridsson, O. and Gregory, R.W. (2021) ‘Algorithmic management of work on online labor platforms: When matching meets control’, <em>MIS Quarterly</em>, 45(4), pp. 1999–2022. doi: <a href="https://doi.org/10.25300/MISQ/2021/15333" target="_blank" rel="noopener">10.25300/MISQ/2021/15333</a>.</p><p data-edit>Rosenblat, A. and Stark, L. (2016) ‘Algorithmic labor and information asymmetries: A case study of Uber’s drivers’, <em>International Journal of Communication</em>, 10, pp. 3758–3784.</p><p data-edit>Schildt, H. (2017) ‘Big data and organizational design – the brave new world of algorithmic management and computer augmented transparency’, <em>Innovation: Organization &amp; Management</em>, 19(1), pp. 23–30. doi: <a href="https://doi.org/10.1080/14479338.2016.1252043" target="_blank" rel="noopener">10.1080/14479338.2016.1252043</a>.</p><p data-edit>Siggelkow, N. (2007) ‘Persuasion with case studies’, <em>Academy of Management Journal</em>, 50(1), pp. 20–24.</p><p data-edit>Uber (2016) ‘Selfies and security’, 23 September. Available at: <a href="https://www.uber.com/us/en/newsroom/securityselfies/" target="_blank" rel="noopener">Uber</a> (Accessed: 26 September 2026).</p><p data-edit>Uber (2021) ‘Upcoming changes to the Driver app’, 18 May. Available at: <a href="https://www.uber.com/us/en/blog/upcoming-changes-to-the-driver-app/" target="_blank" rel="noopener">Uber</a> (Accessed: 26 September 2026).</p><p data-edit>Uber (2022) ‘More choice on trip requests’, 10 February. Available at: <a href="https://www.uber.com/us/en/blog/more-choice-on-trip-requests/" target="_blank" rel="noopener">Uber</a> (Accessed: 26 September 2026).</p><p data-edit>Uber Technologies, Inc. (2026a) <em>2025 annual report (Form 10-K)</em>. Available at: <a href="https://www.sec.gov/Archives/edgar/data/1543151/000154315126000015/uber-20251231.htm" target="_blank" rel="noopener">SEC filing</a> (Accessed: 26 September 2026).</p><p data-edit>Uber Technologies, Inc. (2026b) ‘Uber announces results for second quarter 2026’, 5 August. Available at: <a href="https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Results-for-Second-Quarter-2026/default.aspx" target="_blank" rel="noopener">Uber Investor Relations</a> (Accessed: 26 September 2026).</p><p data-edit>UberPeople.net (n.d.) ‘Algorithmic management Uber’ [Online forum post]. Available at: <a href="https://www.uberpeople.net/threads/algorithmic-management-uber.501482/?post_id=7994250&amp;nested_view=1#post-7994250" target="_blank" rel="noopener">UberPeople.net forum post</a> (Accessed: 26 September 2026).</p></div></div><footer class="question-footer"><span>16</span></footer></section>
-<section class="slide intro-slide qa-slide" data-slide="17" aria-label="Slide 17: Questions and answers" hidden><div class="qa-content"><h2 data-edit>Q&amp;A</h2></div><footer class="question-footer"><span>17</span></footer></section>
+<footer class="question-footer"><span>13</span></footer></section>
+<section class="slide intro-slide references-slide" data-slide="14" aria-label="Slide 14: References" hidden><h2 class="intro-title" data-edit>References</h2><div class="reference-columns"><div><p data-edit>Binns, R., Stein, J., Datta, S., Van Kleek, M. and Shadbolt, N. (2025) ‘Not even nice work if you can get it: A longitudinal study of Uber’s algorithmic pay and pricing’, <em>arXiv</em>, 2506.15278. doi: <a href="https://doi.org/10.48550/arXiv.2506.15278" target="_blank" rel="noopener">10.48550/arXiv.2506.15278</a>.</p><p data-edit>Charmaz, K. (2014) <em>Constructing grounded theory</em>. 2nd edn. London: SAGE.</p><p data-edit>Curchod, C., Patriotta, G., Cohen, L. and Neysen, N. (2020) ‘Working for an algorithm: Power asymmetries and agency in online work settings’, <em>Administrative Science Quarterly</em>, 65(3), pp. 644–676.</p><p data-edit>Gawer, A. (2014) ‘Bridging differing perspectives on technological platforms: Toward an integrative framework’, <em>Research Policy</em>, 43(7), pp. 1239–1249.</p><p data-edit>Gerring, J. (2007) <em>Case study research: Principles and practices</em>. Cambridge: Cambridge University Press.</p><p data-edit>Gioia, D.A., Corley, K.G. and Hamilton, A.L. (2013) ‘Seeking qualitative rigor in inductive research: Notes on the Gioia methodology’, <em>Organizational Research Methods</em>, 16(1), pp. 15–31.</p><p data-edit>Glaser, B.G. (1978) <em>Theoretical sensitivity: Advances in the methodology of grounded theory</em>. Mill Valley, CA: Sociology Press.</p><p data-edit>Gulati, R., Puranam, P. and Tushman, M. (2012) ‘Meta-organization design: Rethinking design in interorganizational and community contexts’, <em>Strategic Management Journal</em>, 33(6), pp. 571–586.</p><p data-edit>Kuhn, K.M. and Maleki, A. (2017) ‘Micro-entrepreneurs, dependent contractors, and instaserfs: Understanding online labor platform workforces’, <em>Academy of Management Perspectives</em>, 31(3), pp. 183–200. doi: <a href="https://doi.org/10.5465/amp.2015.0111" target="_blank" rel="noopener">10.5465/amp.2015.0111</a>.</p><p data-edit>Lee, M.K., Kusbit, D., Metsky, E. and Dabbish, L. (2015) ‘Working with machines: The impact of algorithmic and data-driven management on human workers’, in <em>Proceedings of the 33rd Annual ACM Conference on Human Factors in Computing Systems</em>. New York: ACM, pp. 1603–1612. doi: <a href="https://doi.org/10.1145/2702123.2702548" target="_blank" rel="noopener">10.1145/2702123.2702548</a>.</p></div><div><p data-edit>Möhlmann, M., Zalmanson, L., Henfridsson, O. and Gregory, R.W. (2021) ‘Algorithmic management of work on online labor platforms: When matching meets control’, <em>MIS Quarterly</em>, 45(4), pp. 1999–2022. doi: <a href="https://doi.org/10.25300/MISQ/2021/15333" target="_blank" rel="noopener">10.25300/MISQ/2021/15333</a>.</p><p data-edit>Rosenblat, A. and Stark, L. (2016) ‘Algorithmic labor and information asymmetries: A case study of Uber’s drivers’, <em>International Journal of Communication</em>, 10, pp. 3758–3784.</p><p data-edit>Schildt, H. (2017) ‘Big data and organizational design – the brave new world of algorithmic management and computer augmented transparency’, <em>Innovation: Organization &amp; Management</em>, 19(1), pp. 23–30. doi: <a href="https://doi.org/10.1080/14479338.2016.1252043" target="_blank" rel="noopener">10.1080/14479338.2016.1252043</a>.</p><p data-edit>Siggelkow, N. (2007) ‘Persuasion with case studies’, <em>Academy of Management Journal</em>, 50(1), pp. 20–24.</p><p data-edit>Uber (2016) ‘Selfies and security’, 23 September. Available at: <a href="https://www.uber.com/us/en/newsroom/securityselfies/" target="_blank" rel="noopener">Uber</a> (Accessed: 26 September 2026).</p><p data-edit>Uber (2021) ‘Upcoming changes to the Driver app’, 18 May. Available at: <a href="https://www.uber.com/us/en/blog/upcoming-changes-to-the-driver-app/" target="_blank" rel="noopener">Uber</a> (Accessed: 26 September 2026).</p><p data-edit>Uber (2022) ‘More choice on trip requests’, 10 February. Available at: <a href="https://www.uber.com/us/en/blog/more-choice-on-trip-requests/" target="_blank" rel="noopener">Uber</a> (Accessed: 26 September 2026).</p><p data-edit>Uber Technologies, Inc. (2026a) <em>2025 annual report (Form 10-K)</em>. Available at: <a href="https://www.sec.gov/Archives/edgar/data/1543151/000154315126000015/uber-20251231.htm" target="_blank" rel="noopener">SEC filing</a> (Accessed: 26 September 2026).</p><p data-edit>Uber Technologies, Inc. (2026b) ‘Uber announces results for second quarter 2026’, 5 August. Available at: <a href="https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Results-for-Second-Quarter-2026/default.aspx" target="_blank" rel="noopener">Uber Investor Relations</a> (Accessed: 26 September 2026).</p><p data-edit>UberPeople.net (n.d.) ‘Algorithmic management Uber’ [Online forum post]. Available at: <a href="https://www.uberpeople.net/threads/algorithmic-management-uber.501482/?post_id=7994250&amp;nested_view=1#post-7994250" target="_blank" rel="noopener">UberPeople.net forum post</a> (Accessed: 26 September 2026).</p></div></div><footer class="question-footer"><span>14</span></footer></section>
+<section class="slide intro-slide qa-slide" data-slide="15" aria-label="Slide 15: Questions and answers" hidden><div class="qa-content"><h2 data-edit>Q&amp;A</h2></div><footer class="question-footer"><span>15</span></footer></section>
 </main>
 <p class="hint">Use ← and → to navigate · Select Present for fullscreen</p>
 <dialog id="image-zoom" aria-label="Enlarged forum screenshot"><button id="close-zoom" aria-label="Close enlarged screenshot">Close ×</button><img id="zoom-image" alt=""></dialog>
@@ -676,29 +661,26 @@ let revealStep=0;
 function tagReveal(slide, selector, step){slide.querySelectorAll(selector).forEach(el=>el.dataset.reveal=step);}
 function prepareReveals(){
  const at=n=>slides.find(s=>s.dataset.slide===String(n));
- tagReveal(at(3),'.case-rationale',1);
- tagReveal(at(3),'.theory-main',2);
- tagReveal(at(3),'.intro-rq',3);
- tagReveal(at(5),'.method-prompt',1);
- tagReveal(at(6),'.collection-table thead',1);
- at(6).querySelectorAll('tbody tr').forEach((row,i)=>{row.dataset.reveal=i+1;});
- tagReveal(at(7),'.stage-row-label,.coding-layer.stages',1);
- tagReveal(at(7),'.layer-row-label,.coding-layer.outputs',2);
- tagReveal(at(7),'.focus-row-label,.coding-explanations',3);
- at(7).querySelectorAll('.process-connectors g path').forEach((p,i)=>{p.dataset.reveal=i<2?1:2;});
- tagReveal(at(8),'.coding-arrows ellipse',1);
- tagReveal(at(8),'.coding-arrows g path,.code-label',2);
- [9,10,11].forEach(n=>{
+ tagReveal(at(3),'.method-prompt',1);
+ tagReveal(at(4),'.collection-table thead',1);
+ at(4).querySelectorAll('tbody tr').forEach((row,i)=>{row.dataset.reveal=i+1;});
+ tagReveal(at(5),'.stage-row-label,.coding-layer.stages',1);
+ tagReveal(at(5),'.layer-row-label,.coding-layer.outputs',2);
+ tagReveal(at(5),'.focus-row-label,.coding-explanations',3);
+ at(5).querySelectorAll('.process-connectors g path').forEach((p,i)=>{p.dataset.reveal=i<2?1:2;});
+ tagReveal(at(6),'.coding-arrows ellipse',1);
+ tagReveal(at(6),'.coding-arrows g path,.code-label',2);
+ [7,8,9].forEach(n=>{
   const s=at(n);tagReveal(s,'.f1-h2,.f1-theme',1);tagReveal(s,'.f1-h3,.f1-dimension',2);tagReveal(s,'.f1-h4,.f1-core',3);
   s.querySelectorAll('.f1-connectors g path').forEach(p=>{const x=Number(p.getAttribute('d').match(/^M\s*(\d+)/)[1]);p.dataset.reveal=x<600?1:x<900?2:3;});
  });
  // Slide 12 is a comparison, not a coding diagram: matching, control, synthesis.
- tagReveal(at(12),'.synthesis-matrix',1);
- tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(1),.synthesis-matrix tr>*:nth-child(2)',1);
- tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(4)',2);
- tagReveal(at(12),'.synthesis-matrix tr>*:nth-child(3)',3);
- tagReveal(at(15),'.summary-flow',1);
- at(15).querySelectorAll('.summary-implications>div').forEach((el,i)=>el.dataset.reveal=i+2);
+ tagReveal(at(10),'.synthesis-matrix',1);
+ tagReveal(at(10),'.synthesis-matrix tr>*:nth-child(1),.synthesis-matrix tr>*:nth-child(2)',1);
+ tagReveal(at(10),'.synthesis-matrix tr>*:nth-child(4)',2);
+ tagReveal(at(10),'.synthesis-matrix tr>*:nth-child(3)',3);
+ tagReveal(at(13),'.summary-flow',1);
+ at(13).querySelectorAll('.summary-implications>div').forEach((el,i)=>el.dataset.reveal=i+2);
 }
 function maxReveal(){return Math.max(0,...[...slides[current].querySelectorAll('[data-reveal]')].map(el=>Number(el.dataset.reveal)));}
 function renderReveal(){slides[current].querySelectorAll('[data-reveal]').forEach(el=>{
